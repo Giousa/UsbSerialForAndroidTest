@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.zmm.usbserialforandroidtest.MainActivity">
+
+
+    <TextView
+        android:textSize="20sp"
+        android:id="@+id/tv_receive"
+        android:layout_width="match_parent"
+        android:layout_height="400px"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="固定数据：40 52 05 00 FF 00 10 01 A7"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_send01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送固定数据"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+    <EditText
+        android:id="@+id/et_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="发送数据："
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/btn_send02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送动态数据"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="清空全部数据"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
+
+</LinearLayout>
