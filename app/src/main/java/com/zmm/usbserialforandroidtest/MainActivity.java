@@ -192,7 +192,12 @@ public class MainActivity extends AppCompatActivity {
                 case UsbService.MESSAGE_FROM_SERIAL_PORT:
                     //返回的信息
                     String data = (String) msg.obj;
-                    mActivity.get().mTvReceive.append(data);
+                    TextView tvReceive = mActivity.get().mTvReceive;
+                    tvReceive.append(data);
+
+                    if(tvReceive.getText().length() > 1000){
+                        tvReceive.setText("");
+                    }
                     break;
                 case UsbService.CTS_CHANGE:
                     Toast.makeText(mActivity.get(), "CTS_CHANGE", Toast.LENGTH_LONG).show();
