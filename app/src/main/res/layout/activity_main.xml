@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="com.zmm.usbserialforandroidtest.MainActivity">
 
 
     <TextView
-        android:textSize="20sp"
         android:id="@+id/tv_receive"
         android:layout_width="match_parent"
-        android:layout_height="400px"/>
+        android:layout_height="400px"
+        android:textSize="20sp"/>
 
     <View
         android:layout_width="match_parent"
@@ -25,12 +27,6 @@
         android:text="固定数据：40 52 05 00 FF 00 10 01 A7"
         android:textSize="20sp"/>
 
-    <Button
-        android:id="@+id/btn_send01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="发送固定数据"/>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -41,24 +37,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="发送数据："
+        android:imeOptions="actionGo"
+        android:singleLine="true"
         android:textSize="20sp"/>
 
-    <Button
-        android:id="@+id/btn_send02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="发送动态数据"/>
-
-    <View
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary"/>
+        android:layout_height="200px"
+        android:layout_marginTop="100px"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_clear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="清空全部数据"/>
+        <Button
+            android:id="@+id/btn_send01"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:text="发送固定数据"/>
+
+        <Button
+            android:id="@+id/btn_send02"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:text="发送动态数据"/>
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_weight="1"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:text="清空全部数据"/>
+    </LinearLayout>
+
 
     <View
         android:layout_width="match_parent"

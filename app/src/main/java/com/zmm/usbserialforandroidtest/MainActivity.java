@@ -6,13 +6,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     EditText mEtSend;
     private MyHandler mHandler;
     private UsbService usbService;
+    private InputMethodManager mInputMethodManager;
 
     private byte[] bys = new byte[9];
 
@@ -47,6 +53,21 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         mHandler = new MyHandler(this);
 
+        mEtSend.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if(actionId == EditorInfo.IME_ACTION_GO){
+                    String data = mEtSend.getText().toString();
+                    if(!TextUtils.isEmpty(data)){
+                        if (usbService != null) {
+                            usbService.write(data.getBytes());
+                            hideKeyBoard();
+                        }
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     @OnClick({R.id.btn_send01, R.id.btn_send02,R.id.btn_clear})
@@ -181,5 +202,12 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    protected void hideKeyBoard() {
+        if (mInputMethodManager == null) {
+            mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        }
+        mInputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
     }
 }
